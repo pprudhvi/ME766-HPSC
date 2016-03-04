@@ -21,7 +21,17 @@ int main(){
 
 	int i,j,k;
 	
+	for( i=0; i<NR; i++ ){
+		for( k=0; k<NC; k++){
+			for( j=0; j<NC; j++ ){
+				C[i][j] = C[i][j] + A[i][k]*B[k][j];
+			}
 		
+		}
+	}	
+	
+	printMat(C);
+
 	return 0;
 }
 
