@@ -1,4 +1,4 @@
-#define N 100
+#define N 500
 #define NR N
 #define NC N
 
@@ -12,14 +12,18 @@ void initMat(float A[NR][NC]);
 int main(){
 	
 	float A[NR][NC];
-	initMat(A);		/* fills A with random floats */
 
 	float B[NR][NC];
-	initMat(B);
 
 	float C[NR][NC] = {{0}}; /* initialize to 0 */
+	
+	clock_t start_time, end_time;
 
+	start_time = clock();
 	int i,j,k;
+	
+	initMat(A);		/* fills A with random floats */
+	initMat(B);
 	
 	for( i=0; i<NR; i++ ){
 		for( k=0; k<NC; k++){
@@ -29,8 +33,12 @@ int main(){
 		
 		}
 	}	
+
+	end_time = clock();	
 	
 	printMat(C);
+	
+	printf("\n Time taken is %f \n",(double)(end_time - start_time)/CLOCKS_PER_SEC);
 
 	return 0;
 }
@@ -54,7 +62,7 @@ void initMat(float A[NR][NC]){
 	
 	srand( (unsigned int) time(NULL) );
 	
-	float range = 10.0; /* max element in the array */
+	float range = 1.0; /* max element in the array */
 
 	int i,j;
 
