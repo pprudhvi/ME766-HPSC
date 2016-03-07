@@ -1,4 +1,4 @@
-#define N 500
+#define N 1000
 #define NR N
 #define NC N
 
@@ -11,34 +11,34 @@ void initMat(float A[NR][NC]);
 
 int main(){
 	
-	float A[NR][NC];
+	static float A[NR][NC];
 
-	float B[NR][NC];
+	static float B[NR][NC];
 
-	float C[NR][NC] = {{0}}; /* initialize to 0 */
+	static float C[NR][NC] = {{0}}; /* initialize to 0 */
 	
-	clock_t start_time, end_time;
+	time_t start_time, end_time;
 
-	start_time = clock();
+	start_time = time(NULL);
 	int i,j,k;
 	
 	initMat(A);		/* fills A with random floats */
 	initMat(B);
 	
 	for( i=0; i<NR; i++ ){
-		for( k=0; k<NC; k++){
-			for( j=0; j<NC; j++ ){
+		for( j=0; j<NC; j++ ){
+			for( k=0; k<NC; k++){
 				C[i][j] = C[i][j] + A[i][k]*B[k][j];
 			}
 		
 		}
 	}	
 
-	end_time = clock();	
+	end_time = time(NULL);	
 	
 	printMat(C);
 	
-	printf("\n Time taken is %f \n",(double)(end_time - start_time)/CLOCKS_PER_SEC);
+	printf("\n Time taken is %f \n",(float)(end_time - start_time));///CLOCKS_PER_SEC);
 
 	return 0;
 }
