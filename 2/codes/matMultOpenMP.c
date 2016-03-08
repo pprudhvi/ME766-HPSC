@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <omp.h>
+#include <mpi.h>
 
 void printMat(float A[NR][NC]);
 void initMat(float A[NR][NC]);
@@ -18,9 +19,9 @@ int main(){
 
 	static float C[NR][NC] = {{0}}; /* initialize to 0 */
 	
-	time_t start_time, end_time;
+	double start_time, end_time;
 
-	start_time = time(NULL);
+	start_time = MPI_Wtime();
 	int i,j,k;
 	initMat(A);		/* fills A with random floats */
 	initMat(B);
@@ -34,11 +35,11 @@ int main(){
 		}
 	}	
 	
-	end_time = time(NULL);	
+	end_time = MPI_Wtime();
 
 	printMat(C);
 
-	printf("\n Time taken is %f \n",(float)(end_time - start_time));///CLOCKS_PER_SEC);
+	printf("\n Time taken is %f \n",(float)(end_time - start_time));
 
 	return 0;
 }
