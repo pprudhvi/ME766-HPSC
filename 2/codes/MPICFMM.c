@@ -1,4 +1,4 @@
-#define N 2000
+#define N 1000
 #define NR N
 #define NC N
 #define MASTER 0
@@ -8,7 +8,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "mpi.h"
+#include <mpi.h>
 #include <time.h>
 
 void printMat(float A[NR][NC]);
