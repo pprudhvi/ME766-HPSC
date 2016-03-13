@@ -1,24 +1,3 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Programming/Coding Assignment
-% LaTeX Template
-%
-% This template has been downloaded from:
-% http://www.latextemplates.com
-%
-% Original author:
-% Ted Pavlic (http://www.tedpavlic.com)
-%
-% Note:
-% The \lipsum[#] commands throughout this template generate dummy text
-% to fill the template out. These commands should all be removed when 
-% writing assignment content.
-%
-% This template uses a Perl script as an example snippet of code, most other
-% languages are also usable. Configure them in the "CODE INCLUSION 
-% CONFIGURATION" section.
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 %----------------------------------------------------------------------------------------
 %	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
@@ -31,9 +10,8 @@
 \usepackage[usenames,dvipsnames]{color} % Required for custom colors
 \usepackage{graphicx} % Required to insert images
 \usepackage{listings} % Required for insertion of code
-\usepackage{courier} % Required for the courier font
-\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
-
+\usepackage{libertine} % Required for the courier font
+\usepackage{inconsolata}
 % Margins
 \topmargin=-0.45in
 \evensidemargin=0in
@@ -47,7 +25,7 @@
 % Set up the header and footer
 \pagestyle{fancy}
 \lhead{\hmwkAuthorName} % Top left header
-\chead{\hmwkClass\ (\hmwkClassInstructor\ \hmwkClassTime): \hmwkTitle} % Top center head
+\chead{\hmwkClass : \hmwkTitle} % Top center head
 \rhead{\firstxmark} % Top right header
 \lfoot{\lastxmark} % Bottom left footer
 \cfoot{} % Bottom center footer
@@ -61,41 +39,30 @@
 %	CODE INCLUSION CONFIGURATION
 %----------------------------------------------------------------------------------------
 
-\definecolor{MyDarkGreen}{rgb}{0.0,0.4,0.0} % This is the color used for comments
-\lstloadlanguages{Perl} % Load Perl syntax for listings, for a list of other languages supported see: ftp://ftp.tex.ac.uk/tex-archive/macros/latex/contrib/listings/listings.pdf
-\lstset{language=Perl, % Use Perl in this example
-        frame=single, % Single frame around code
-        basicstyle=\small\ttfamily, % Use small true type font
-        keywordstyle=[1]\color{Blue}\bf, % Perl functions bold and blue
-        keywordstyle=[2]\color{Purple}, % Perl function arguments purple
-        keywordstyle=[3]\color{Blue}\underbar, % Custom functions underlined and blue
-        identifierstyle=, % Nothing special about identifiers                                         
-        commentstyle=\usefont{T1}{pcr}{m}{sl}\color{MyDarkGreen}\small, % Comments small dark green courier font
-        stringstyle=\color{Purple}, % Strings are purple
-        showstringspaces=false, % Don't put marks in string spaces
-        tabsize=5, % 5 spaces per tab
-        %
-        % Put standard Perl functions not included in the default language here
-        morekeywords={rand},
-        %
-        % Put Perl function parameters here
-        morekeywords=[2]{on, off, interp},
-        %
-        % Put user defined functions here
-        morekeywords=[3]{test},
-       	%
-        morecomment=[l][\color{Blue}]{...}, % Line continuation (...) like blue comment
-        numbers=left, % Line numbers on left
-        firstnumber=1, % Line numbers start with line 1
-        numberstyle=\tiny\color{Blue}, % Line numbers are blue and small
-        stepnumber=5 % Line numbers go in steps of 5
-}
+\definecolor{lineno}{rgb}{0.5,0.5,0.5}
+\definecolor{code}{rgb}{0,0.1,0.6}
+\definecolor{keyword}{rgb}{0.5,0.1,0.1}
+\definecolor{titlebox}{rgb}{0.85,0.85,0.85}
+\definecolor{download}{rgb}{0.8,0.1,0.5}
+\definecolor{title}{rgb}{0.4,0.4,0.4}
+\definecolor{mygrey}{gray}{0.96}
 
-% Creates a new command to include a perl script, the first parameter is the filename of the script (without .pl), the second parameter is the caption
-\newcommand{\perlscript}[2]{
-\begin{itemize}
-\item[]\lstinputlisting[caption=#2,label=#1]{#1.pl}
-\end{itemize}
+\lstset{
+	language=C,
+	basicstyle=\ttfamily\small\color{code},
+	showspaces=false,
+	showstringspaces=false,
+	numbers=left,
+	firstnumber=1,
+	stepnumber=1,
+	numberfirstline=true,
+	numberstyle=\color{lineno}\sffamily\scriptsize,
+	keywordstyle=\color{keyword}\bfseries,
+	stringstyle=\itshape,
+	morekeywords={dosync,if},
+	deletekeywords={alter},
+	backgroundcolor=\color{mygrey},
+	commentstyle=\color{Green}
 }
 
 %----------------------------------------------------------------------------------------
@@ -105,14 +72,14 @@
 
 % Header and footer for when a page split occurs within a problem environment
 \newcommand{\enterProblemHeader}[1]{
-\nobreak\extramarks{#1}{#1 continued on next page\ldots}\nobreak
-\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+	\nobreak\extramarks{#1}{#1 continued on next page\ldots}\nobreak
+	\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
 }
 
 % Header and footer for when a page split occurs between problem environments
 \newcommand{\exitProblemHeader}[1]{
-\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
-\nobreak\extramarks{#1}{}\nobreak
+	\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+	\nobreak\extramarks{#1}{}\nobreak
 }
 
 \setcounter{secnumdepth}{0} % Removes default section numbers
@@ -120,12 +87,12 @@
 
 \newcommand{\homeworkProblemName}{}
 \newenvironment{homeworkProblem}[1][Problem \arabic{homeworkProblemCounter}]{ % Makes a new environment called homeworkProblem which takes 1 argument (custom name) but the default is "Problem #"
-\stepcounter{homeworkProblemCounter} % Increase counter for number of problems
-\renewcommand{\homeworkProblemName}{#1} % Assign \homeworkProblemName the name of the problem
-\section{\homeworkProblemName} % Make a section in the document with the custom problem count
-\enterProblemHeader{\homeworkProblemName} % Header and footer within the environment
+	\stepcounter{homeworkProblemCounter} % Increase counter for number of problems
+	\renewcommand{\homeworkProblemName}{#1} % Assign \homeworkProblemName the name of the problem
+	\section{\homeworkProblemName} % Make a section in the document with the custom problem count
+	\enterProblemHeader{\homeworkProblemName} % Header and footer within the environment
 }{
-\exitProblemHeader{\homeworkProblemName} % Header and footer after the environment
+	\exitProblemHeader{\homeworkProblemName} % Header and footer after the environment
 }
 
 \newcommand{\problemAnswer}[1]{ % Defines the problem answer command with the content as the only argument
@@ -134,34 +101,34 @@
 
 \newcommand{\homeworkSectionName}{}
 \newenvironment{homeworkSection}[1]{ % New environment for sections within homework problems, takes 1 argument - the name of the section
-\renewcommand{\homeworkSectionName}{#1} % Assign \homeworkSectionName to the name of the section from the environment argument
-\subsection{\homeworkSectionName} % Make a subsection with the custom name of the subsection
-\enterProblemHeader{\homeworkProblemName\ [\homeworkSectionName]} % Header and footer within the environment
+	\renewcommand{\homeworkSectionName}{#1} % Assign \homeworkSectionName to the name of the section from the environment argument
+	\subsection{\homeworkSectionName} % Make a subsection with the custom name of the subsection
+	\enterProblemHeader{\homeworkProblemName\ [\homeworkSectionName]} % Header and footer within the environment
 }{
-\enterProblemHeader{\homeworkProblemName} % Header and footer after the environment
+	\enterProblemHeader{\homeworkProblemName} % Header and footer after the environment
 }
 
 %----------------------------------------------------------------------------------------
 %	NAME AND CLASS SECTION
 %----------------------------------------------------------------------------------------
 
-\newcommand{\hmwkTitle}{Assignment\ \#1} % Assignment title
-\newcommand{\hmwkDueDate}{Monday,\ January\ 1,\ 2012} % Due date
-\newcommand{\hmwkClass}{COMPSCI\ 101} % Course/class
-\newcommand{\hmwkClassTime}{10:30am} % Class/lecture time
-\newcommand{\hmwkClassInstructor}{Jones} % Teacher/lecturer
-\newcommand{\hmwkAuthorName}{John Smith} % Your name
+\newcommand{\hmwkTitle}{Assignment\ \#2} % Assignment title
+%\newcommand{\hmwkDueDate}{Monday,\ January\ 1,\ 2012} % Due date
+\newcommand{\hmwkClass}{ME 766} % Course/class
+%\newcommand{\hmwkClassTime}{10:30am} % Class/lecture time
+%\newcommand{\hmwkClassInstructor}{Jones} % Teacher/lecturer
+\newcommand{\hmwkAuthorName}{110070039} % Your name
 
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
 
 \title{
-\vspace{2in}
-\textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
-\normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
-\vspace{0.1in}\large{\textit{\hmwkClassInstructor\ \hmwkClassTime}}
-\vspace{3in}
+	\vspace{2in}
+	\textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+	%\normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+	%\vspace{0.1in}\large{\textit{\hmwkClassInstructor\ \hmwkClassTime}}
+	\vspace{3in}
 }
 
 \author{\textbf{\hmwkAuthorName}}
@@ -171,17 +138,6 @@
 
 \begin{document}
 
-\maketitle
-
-%----------------------------------------------------------------------------------------
-%	TABLE OF CONTENTS
-%----------------------------------------------------------------------------------------
-
-%\setcounter{tocdepth}{1} % Uncomment this line if you don't want subsections listed in the ToC
-
-\newpage
-\tableofcontents
-\newpage
 
 %----------------------------------------------------------------------------------------
 %	PROBLEM 1
@@ -190,11 +146,8 @@
 % To have just one problem per page, simply put a \clearpage after each problem
 
 \begin{homeworkProblem}
-Listing \ref{homework_example} shows a Perl script.
 
-\perlscript{homework_example}{Sample Perl Script With Highlighting}
-
-\lipsum[1]
+	\lstinputlisting[ firstline=37, lastline=45]{homeworkexample.c}
 \end{homeworkProblem}
 
 %----------------------------------------------------------------------------------------
@@ -202,15 +155,6 @@ Listing \ref{homework_example} shows a Perl script.
 %----------------------------------------------------------------------------------------
 
 \begin{homeworkProblem}
-\lipsum[2]
-
-\problemAnswer{
-\begin{center}
-\includegraphics[width=0.75\columnwidth]{example_figure} % Example image
-\end{center}
-
-\lipsum[3-5]
-}
 \end{homeworkProblem}
 
 %----------------------------------------------------------------------------------------
