@@ -50,13 +50,13 @@ int main(int argc, char **argv){
 		int noOfRows[npes]; /* no of rows computed by a PE */
 		int startingRow[npes]; /* */
 		startingRow[0] = 0;
-		noOfRows[0] = 0;
-
+		noOfRows[0] = NR/(1*npes);
+		int rowsRemaining = NR - noOfRows[0];
 		int l;
-		int rem = NR%(npes-1);
+		int rem = rowsRemaining%(npes-1);
 		
 		for(l=1;l<npes;l++){
-			noOfRows[l] = NR/(npes-1);	
+			noOfRows[l] = rowsRemaining /(npes-1);	
 			if( rem > 0){
 				noOfRows[l]++;
 				rem--;
@@ -96,7 +96,7 @@ int main(int argc, char **argv){
 
 		end_time = MPI_Wtime();
 
-		printMat(C);
+		//printMat(C);
 
 		printf("\n Time taken is %f \n",(float)(end_time - start_time));
 	}
