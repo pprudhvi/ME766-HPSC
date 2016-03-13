@@ -39,7 +39,7 @@ int main(){
 
 	end_time = MPI_Wtime();
 
-	printMat(C);
+//	printMat(C);
 
 	printf("\n Time taken is %f \n",(float)(end_time - start_time));
 
