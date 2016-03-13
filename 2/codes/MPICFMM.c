@@ -50,24 +50,24 @@ int main(int argc, char **argv){
 		int noOfRows[npes]; /* no of rows computed by a PE */
 		int startingRow[npes]; /* */
 		startingRow[0] = 0;
+		noOfRows[0] = NR/(1*npes);
+		int rowsRemaining = NR - noOfRows[0];
 		int l;
-		int rem = NR%npes;
+		int rem = rowsRemaining%(npes-1);
 		
-		for(l=0;l<npes;l++){
-			noOfRows[l] = NR/npes;	
-			if(l>0){
-				if( rem > 0){
-					noOfRows[l]++;
-					rem--;
-				}
-				startingRow[l] = startingRow[l-1] + noOfRows[l-1];
-
+		for(l=1;l<npes;l++){
+			noOfRows[l] = rowsRemaining /(npes-1);	
+			if( rem > 0){
+				noOfRows[l]++;
+				rem--;
 			}
+			startingRow[l] = startingRow[l-1] + noOfRows[l-1];
+
 		}
-		
+
 		for( l = 1; l<npes; l++){  /* send rows to PEs*/
 			rows = noOfRows[l];
-		
+
 			MPI_Send(&rows,1,MPI_INT,l,TOSLAVE,MPI_COMM_WORLD);	
 			MPI_Send(&A[startingRow[l]][0],rows*NC,MPI_FLOAT,l,
 					TOSLAVE,MPI_COMM_WORLD);
@@ -88,15 +88,15 @@ int main(int argc, char **argv){
 
 		for( l = 1; l<npes; l++){  /* receive rows from PEs*/
 			rows = noOfRows[l];
-		
+
 			MPI_Recv(&C[startingRow[l]][0],rows*NC,MPI_FLOAT,l,
 					TOMASTER,MPI_COMM_WORLD,MPI_STATUS_IGNORE);
 
 		}
-		
+
 		end_time = MPI_Wtime();
 
-		printMat(C);
+		//printMat(C);
 
 		printf("\n Time taken is %f \n",(float)(end_time - start_time));
 	}
@@ -105,9 +105,9 @@ int main(int argc, char **argv){
 		MPI_Recv(&rows,1,MPI_INT,MASTER,TOSLAVE,MPI_COMM_WORLD,MPI_STATUS_IGNORE);
 
 		MPI_Recv(A,rows*NC,MPI_FLOAT,MASTER,TOSLAVE,MPI_COMM_WORLD,MPI_STATUS_IGNORE);
-			
+
 		MPI_Recv(B,NR*NC,MPI_FLOAT,MASTER,TOSLAVE,MPI_COMM_WORLD,MPI_STATUS_IGNORE);
-	
+
 		for( i=0; i<rows; i++ ){ /* computation */
 			for( k=0; k<NC; k++){
 				for( j=0; j<NC; j++ ){
@@ -116,10 +116,10 @@ int main(int argc, char **argv){
 
 			}
 		}	
-			
+
 		MPI_Send(C,rows*NC,MPI_FLOAT,MASTER,
-					TOMASTER,MPI_COMM_WORLD);
-		
+				TOMASTER,MPI_COMM_WORLD);
+
 	}
 
 	MPI_Finalize();
