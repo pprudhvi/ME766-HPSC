@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2016.2.25)  13 MAR 2016 12:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2016.2.29)  15 MAR 2016 18:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -347,68 +347,47 @@ e
 Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
 tim
 )
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 14.4pt on input line 149.
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 14.4pt on input line 149.
-LaTeX Font Info:    Try loading font information for OT1+zi4 on input line 150.
+LaTeX Font Info:    Try loading font information for OT1+zi4 on input line 151.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/inconsolata/ot1zi4.fd
 File: ot1zi4.fd 2013/06/09 OT1/zi4 (Inconsolata)
 )
-(./homeworkexample.c
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 38.
-LaTeX Font Info:    Try loading font information for OT1+LinuxBiolinumT-TLF on 
-input line 38.
-
-(/usr/share/texlive/texmf-dist/tex/latex/libertine/OT1LinuxBiolinumT-TLF.fd
-File: OT1LinuxBiolinumT-TLF.fd 2012/11/26 (autoinst) Font definitions for OT1/L
-inuxBiolinumT-TLF.
-)
-LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 38.
-LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 7.0pt on input line 38.
-
-
-LaTeX Font Warning: Font shape `OT1/zi4/m/it' undefined
-(Font)              using `OT1/zi4/m/n' instead on input line 42.
-
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 157.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 157.
 LaTeX Font Info:    Font shape `OT1/zi4/bx/n' in size <9> not available
-(Font)              Font shape `OT1/zi4/b/n' tried instead on input line 42.
-) 
+(Font)              Font shape `OT1/zi4/b/n' tried instead on input line 161.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/n' will be
+(Font)              scaled to size 10.0pt on input line 187.
+
+
 AED: lastpage setting LastPage
 [1{/usr/share/texlive/texmf-dist/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
-(./report.aux)
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
- ) 
+(./report.aux) ) 
 Here is how much of TeX's memory you used:
- 5142 strings out of 495025
- 81830 string characters out of 6181515
- 146297 words of memory out of 5000000
- 8272 multiletter control sequences out of 15000+600000
- 13122 words of font info for 26 fonts, out of 8000000 for 9000
+ 5089 strings out of 495025
+ 80165 string characters out of 6181515
+ 151522 words of memory out of 5000000
+ 8229 multiletter control sequences out of 15000+600000
+ 7513 words of font info for 21 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 38i,11n,72p,246b,1290s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/inconsolata/i4-ot1-0.enc}{/usr
-/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_c6xmqr.enc}{/usr/share
-/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_lu7m2n.enc}{/usr/share/texli
-ve/texmf-dist/fonts/enc/dvips/libertine/lbtn_c7kyj5.enc}</usr/share/texlive/tex
-mf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4b.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/libertine/LinBiolinumT.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/libertine/LinLibertineT.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/libertine/LinLibertineTB.pfb>
-Output written on report.pdf (1 page, 204610 bytes).
+ 38i,17n,72p,246b,1250s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_l
+u7m2n.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/inconsolata/i4-ot1-0.e
+nc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_c7kyj5.enc}</u
+sr/share/texlive/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4b.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineT.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineTB.
+pfb>
+Output written on report.pdf (1 page, 178733 bytes).
 PDF statistics:
- 32 PDF objects out of 1000 (max. 8388607)
- 23 compressed objects within 1 object stream
+ 27 PDF objects out of 1000 (max. 8388607)
+ 19 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

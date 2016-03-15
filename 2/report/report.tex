@@ -51,18 +51,18 @@
 	language=C,
 	basicstyle=\ttfamily\small\color{code},
 	showspaces=false,
-	showstringspaces=false,
-	numbers=left,
-	firstnumber=1,
-	stepnumber=1,
-	numberfirstline=true,
-	numberstyle=\color{lineno}\sffamily\scriptsize,
+	%showstringspaces=false,
+	%numbers=left,
+	%firstnumber=1,
+	%stepnumber=1,
+%	numberfirstline=true,
+	%numberstyle=\color{lineno}\sffamily\scriptsize,
 	keywordstyle=\color{keyword}\bfseries,
 	stringstyle=\itshape,
-	morekeywords={dosync,if},
+	%morekeywords={dosync,if},
 	deletekeywords={alter},
-	backgroundcolor=\color{mygrey},
-	commentstyle=\color{Green}
+	%backgroundcolor=\color{mygrey},
+	commentstyle=\color{Green},
 }
 
 %----------------------------------------------------------------------------------------
@@ -145,18 +145,69 @@
 
 % To have just one problem per page, simply put a \clearpage after each problem
 
-\begin{homeworkProblem}
+The basic code block that does the computation can be written in two ways
+as shown in the table below. The code on right side is faster than that on
+the left column of the table as it is cache-friendly. It might not make
+much difference for small values of \verb+NC+ but for larger values 
+the speedup is upto 2. We are going to use this code for matrix multiplication
+in all files.
+\begin{table}[h]
 
-	\lstinputlisting[ firstline=37, lastline=45]{homeworkexample.c}
-\end{homeworkProblem}
+	\begin{center}
+	\begin{tabular}{| l | l |}
 
-%----------------------------------------------------------------------------------------
-%	PROBLEM 2
-%----------------------------------------------------------------------------------------
+			\hline 
+			\begin{lstlisting}
+for( i=0; i<NR; i++ ){
+  for( j=0; j<NC; j++ ){
+    for( k=0; k<NC; k++){
+	  C[i][j] += A[i][k]*B[k][j];
+}
+}
+}
+			\end{lstlisting} 
+			&
+			\begin{lstlisting}
+for( i=0; i<NR; i++ ){
+  for( k=0; k<NC; k++){
+    for( j=0; j<NC; j++ ){
+	  C[i][j] += A[i][k]*B[k][j];
+}
+}
+}
+			\end{lstlisting} \\ 
+			\hline
 
-\begin{homeworkProblem}
-\end{homeworkProblem}
+		\end{tabular}
+	\end{center}
+	\caption{Matrix Multiplication; right is cache-friendly}
 
-%----------------------------------------------------------------------------------------
+\end{table}
+
+\textbf{Results}
+
+\begin{table}[h]
+
+\begin{center}
+	\begin{tabular}{| r | l | l | l | l | l | l | l | l | l |}
+		\hline
+	N&serial & omp n=2& omp n=4& omp n=8& omp n= 24 & mpi n=2& mpi n=4& mpi n=8& mpi n=24 \\ \hline
+		100 \\ \hline
+		200 \\ \hline
+		400 \\ \hline
+		800 \\ \hline
+		1000 \\ \hline
+		2000 \\ \hline
+		5000 \\ \hline
+		8000 \\ \hline
+		10000 \\ 
+		\hline
+	\end{tabular}
+\end{center}
+
+
+\caption{Time taken. N is size of matrix, n is no. of threads/procesess}
+\end{table}
+
 
 \end{document}
