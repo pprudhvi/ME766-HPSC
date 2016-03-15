@@ -1,5 +1,5 @@
 #!/bin/bash
-for matSize in {100,200,400,800,1000}
+for matSize in {100,200,400,800,1000,2000,5000,8000,10000}
 do
 	sed -i "1s/.*/#define\ N\ $matSize/" SerialCFMM.c
 	mpicc -o SerialCFMM SerialCFMM.c
@@ -7,10 +7,26 @@ do
 
 	sed -i "1s/.*/#define\ N\ $matSize/" OMPCFMM.c
 	mpicc -fopenmp -o  OMPCFMM OMPCFMM.c
-	./OMPCFMM | sed "s/\ Time\ taken\ is\ //" >> ompruns 
-	
+	for numThreads in {2,4,8}
+	do
+		export OMP_NUM_THREADS=$numThreads
+		echo $numThreads >> ompruns
+		./OMPCFMM | sed "s/\ Time\ taken\ is\ //" >> ompruns 
+	done
+	unset OMP_NUM_THREADS
+	echo all >> ompruns
+	./OMPCFMM | sed "s/\ Time\ taken\ is\ //" >> ompruns
+
+
 	sed -i "1s/.*/#define\ N\ $matSize/" MPICFMM.c
 	mpicc -o MPICFMM MPICFMM.c
-	mpirun -np 8 MPICFMM | sed "s/\ Time\ taken\ is\ //" >> mpiruns
-	
+	for npes in {2,4,8}
+	do
+		echo $npes >> mpiruns
+		mpirun -np $npes MPICFMM | sed "s/\ Time\ taken\ is\ //" >> mpiruns
+	done
+	echo all >> mpiruns
+	mpirun -np 24 MPICFMM | sed "s/\ Time\ taken\ is\ //" >> mpiruns
+
+
 done
