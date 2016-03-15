@@ -5,10 +5,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <mpi.h>
-#include <time.h>
 
 void printMat(float A[NR][NC]);
-void initMat(float A[NR][NC]);
+void initMat(float A[NR][NC],float B[NR][NC]);
 
 int main(){
 	
@@ -23,8 +22,7 @@ int main(){
 	start_time = MPI_Wtime(); 
 	int i,j,k;
 	
-	initMat(A);		/* fills A with random floats */
-	initMat(B);
+	initMat(A,B);		/* fills A with random floats */
 	
 	for( i=0; i<NR; i++ ){
 		for( j=0; j<NC; j++ ){
@@ -37,7 +35,7 @@ int main(){
 
 	end_time = MPI_Wtime();
 	
-//	printMat(C);
+	//printMat(C);
 	
 	printf("\n Time taken is %f \n",(float)(end_time - start_time));
 
@@ -59,17 +57,14 @@ void printMat(float A[NR][NC]){
 
 }
 
-void initMat(float A[NR][NC]){
-	
-	srand( (unsigned int) time(NULL) );
-	
-	float range = 1.0; /* max element in the array */
+void initMat(float A[NR][NC],float B[NR][NC]){
 
 	int i,j;
 
 	for( i=0; i < NR; i++){
 		for( j=0; j<NC; j++){
-			A[i][j] = ( (float)rand() / (float)(RAND_MAX) ) * range;
+			A[i][j] = i+j;
+			B[i][j] = i*j;
 		}
 	} 
 

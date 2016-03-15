@@ -9,10 +9,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <mpi.h>
-#include <time.h>
 
 void printMat(float A[NR][NC]);
-void initMat(float A[NR][NC]);
+void initMat(float A[NR][NC],float B[NR][NC]);
 
 int main(int argc, char **argv){
 
@@ -44,8 +43,7 @@ int main(int argc, char **argv){
 	if ( mype == MASTER ){	
 
 
-		initMat(A);		/* fills A with random floats */
-		initMat(B);
+		initMat(A,B);		/* fills A with random floats */
 		
 		int noOfRows[npes]; /* no of rows computed by a PE */
 		int startingRow[npes]; /* */
@@ -141,17 +139,14 @@ void printMat(float A[NR][NC]){
 
 }
 
-void initMat(float A[NR][NC]){
-
-	srand( (unsigned int) time(NULL) );
-
-	float range = 1.0; /* max element in the array */
+void initMat(float A[NR][NC],float B[NR][NC]){
 
 	int i,j;
 
 	for( i=0; i < NR; i++){
 		for( j=0; j<NC; j++){
-			A[i][j] = ( (float)rand() / (float)(RAND_MAX) ) * range;
+			A[i][j] = i+j;
+			B[i][j] = i*j;
 		}
 	} 
 
