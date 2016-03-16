@@ -4,6 +4,8 @@
 
 \documentclass{article}
 
+\usepackage{booktabs}  % nice looking tables
+\usepackage{siunitx}
 \usepackage{fancyhdr} % Required for custom headers
 \usepackage{lastpage} % Required to determine the last page for the footer
 \usepackage{extramarks} % Required for headers and footers
@@ -146,13 +148,10 @@
 % To have just one problem per page, simply put a \clearpage after each problem
 
 The basic code block that does the computation can be written in two ways
-as shown in the table below. The code on right side is faster than that on
-the left column of the table as it is cache-friendly. It might not make
-much difference for small values of \verb+NC+ but for larger values 
-the speedup is upto 2. We are going to use this code for matrix multiplication
-in all files.
+as shown in the table below. 
 \begin{table}[h]
 
+	\caption{Matrix Multiplication; right is cache-friendly}
 	\begin{center}
 	\begin{tabular}{| l | l |}
 
@@ -180,15 +179,20 @@ for( i=0; i<NR; i++ ){
 
 		\end{tabular}
 	\end{center}
-	\caption{Matrix Multiplication; right is cache-friendly}
 
 \end{table}
+The code on right side should be faster than that in 
+the left column of the table as it is cache-friendly. Table 2 confirms that this is indeed the case. It might not make
+much difference for small values of \verb+NC+ but for larger values
+the speedup is upto 2. We are going to use cache-friendly computation of matrix multiplication
+in all files.
 
 \begin{table}[h]
+	\caption{normal vs. cache-friendly }
 	\begin{center}
 	\begin{tabular}{| r | r | r |}
 		\hline
-		N & a & b \\ \hline
+		N & normal & cache-friendly \\ \hline
 		100&0.008075 & 0.008205 \\ \hline
 		200&0.063293&0.064621 \\ \hline
 		400&0.594145&0.610361 \\ \hline
@@ -201,48 +205,51 @@ for( i=0; i<NR; i++ ){
 	\end{tabular}
 \end{center}
 \end{table}
+\newpage
 \textbf{Results}
 
 \begin{table}[h]
-
-	\begin{center}
-		\begin{tabular}{| r | l | l | l | l | l | l | l | l | l |}
+	\sisetup{round-mode=places}
+	\caption{Time taken. N is size of matrix, n is no. of threads/procesess}
+	\centering
+%	\begin{center}
+	\begin{tabular}{| S[round-precision=3] | S[round-precision=3] | S[round-precision=3] | S[round-precision=3] | S[round-precision=3] | S[round-precision=3] | S[round-precision=3] | S[round-precision=3] | S[round-precision=3] | S[round-precision=3] |}
 			\hline
-			N&serial & omp n=2& omp n=4& omp n=8& omp n= 24 & mpi n=2& mpi n=4& mpi n=8& mpi n=24 \\ \hline
-			100&0.008205&0.009146&0.002916&0.001719
+			{N}&{serial} & {omp n=2}& {omp n=4}& {omp n=8}& {omp n= 24} & {mpi n=2}& {mpi n=4}& {mpi n=8}& {mpi n=24} \\ \hline
+			{100}&0.008205&0.009146&0.002916&0.001719
 			&0.006868 & 0.004521 & 0.004978 &0.002792&0.005075\\ \hline
-			
-			200&0.064621&0.006868&0.041666&	0.021512&0.010956
+
+			{200}&0.064621&0.006868&0.041666&	0.021512&0.010956
 			&0.058968&0.033004&0.018016&0.022578\\ \hline
-		
-			400 &0.610361&0.329870&0.186483&0.105709&0.080594 
+
+			{400} &0.610361&0.329870&0.186483&0.105709&0.080594 
 			&0.345524&0.250767&0.183066&0.092229\\ \hline
-		
-			800&4.080133&2.195364&1.172719&0.573523&0.486476
+
+			{800}&4.080133&2.195364&1.172719&0.573523&0.486476
 			&2.328038&1.368429&0.696170&0.588597\\ \hline
-			
-			1000&5.573937&2.841520&2.338277&0.804072&0.593531
+
+			{1000}&5.573937&2.841520&2.338277&0.804072&0.593531
 			&2.898817&2.535994&1.165923&0.717748\\ \hline
-			
-			2000&45.544228&22.061188&11.366979&5.903165&4.064920
+
+			{2000}&45.544228&22.061188&11.366979&5.903165&4.064920
 			&22.534018&11.835779&10.047218&4.581032\\ \hline
 
-			5000&703.574890&342.611450&175.706894&90.065071&62.474705
+			{5000}&703.574890&342.611450&175.706894&90.065071&62.474705
 			&346.948578&179.307938&91.601669&57.712799\\ \hline
-			
-			8000&2878.790771&1400.647705&697.816223&363.321991 
+
+			{8000}&2878.790771&1400.647705&697.816223&363.321991 
 			&234.618332&1434.890625&715.344727&636.908081
 			&233.626678 \\ \hline
-			
-			10000&6591.408691&2737.574951&1798.366455&740.366760 
+
+			{10000}&6591.408691&2737.574951&1798.366455&740.366760 
 			&499.029694&2812.980469&1680.102051&877.236450&557.603271\\ 
 			\hline
 		\end{tabular}
-	\end{center}
+%	\end{center}
 
 
-	\caption{Time taken. N is size of matrix, n is no. of threads/procesess}
 \end{table}
+
 
 
 \end{document}
