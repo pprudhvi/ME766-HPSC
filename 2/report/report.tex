@@ -184,7 +184,7 @@ for( i=0; i<NR; i++ ){
 The code on right side should be faster than that in 
 the left column of the table as it is cache-friendly. Table 2 confirms that this is indeed the case. It might not make
 much difference for small values of \verb+NC+ but for larger values
-the speedup is upto 2. We are going to use cache-friendly computation of matrix multiplication
+the speedup is upto 3. We are going to use cache-friendly computation of matrix multiplication
 in all files.
 
 \begin{table}[h]
@@ -210,12 +210,12 @@ in all files.
 
 \begin{table}[h]
 	\sisetup{round-mode=places}
-	\caption{Time taken. N is size of matrix, n is no. of threads/procesess}
+	\caption{Time taken. N - matrix size, n - threads/procesess}
 	\centering
 %	\begin{center}
 	\begin{tabular}{| S[round-precision=3] | S[round-precision=3] | S[round-precision=3] | S[round-precision=3] | S[round-precision=3] | S[round-precision=3] | S[round-precision=3] | S[round-precision=3] | S[round-precision=3] | S[round-precision=3] |}
 			\hline
-			{N}&{serial} & {omp n=2}& {omp n=4}& {omp n=8}& {omp n= 24} & {mpi n=2}& {mpi n=4}& {mpi n=8}& {mpi n=24} \\ \hline
+			{N}&{serial} & {OMP n=2}& {OMP n=4}& {OMP n=8}& {OMP n= 24} & {MPI n=2}& {MPI n=4}& {MPI n=8}& {MPI n=24} \\ \hline
 			{100}&0.008205&0.009146&0.002916&0.001719
 			&0.006868 & 0.004521 & 0.004978 &0.002792&0.005075\\ \hline
 
@@ -250,6 +250,27 @@ in all files.
 
 \end{table}
 
+The following things can be inferred from the results.
+\begin{enumerate}
+	\item  Optimizing the way core computation of a problem is done can give good speedup. In this case we got a speedup of around 3 by changing the order(row vs. column) in which elements are accessed.    
+	\item Doubling the problem size increases the runtime by 8 times. This is in accordance with the $O(N^3)$ algorithm used.
+	\item Increasing the number of threads/processes may not always result in proportional increase in speedup. Changing $n$ from 2 to 4 or 4 to 8 increased the speedup by 2 but changing $n$ from 8 to 24 did not increase the speedup by 3. This is mainly due to the increase in overhead associated with thread creation/management.
+	\item OMP performs slightly better than MPI. (Note: Some of the numbers in Table 3 may not be correct. Some other process running at the same time may have caused this.)
+	\item The beauty of OMP can be appreciated well in this case. Inserting just a single line in serial code resulted in serious speedup.
 
+\end{enumerate}
 
+\textbf{Hardware used}
+The machine on which the above results were produced has 24 cores, 15MB L3 cache and it is running Debian OS.
+\newpage
+\textbf{Codes}
+All codes are available at https://github.com/prupro/HPSC/tree/master/2/codes. Files that have 'CF' in the name are to be used. \\
+Serial:
+\lstinputlisting{../codes/SerialCFMM.c}
+\newpage
+OMP:
+\lstinputlisting{../codes/OMPCFMM.c}
+\newpage
+MPI:
+\lstinputlisting{../codes/MPICFMM.c}
 \end{document}

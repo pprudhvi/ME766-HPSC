@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2016.2.25)  16 MAR 2016 23:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2016.2.25)  17 MAR 2016 01:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -759,34 +759,64 @@ LaTeX Font Info:    Font shape `OT1/zi4/bx/n' in size <9> not available
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/n' will be
 (Font)              scaled to size 10.0pt on input line 209.
 
-Overfull \hbox (43.7243pt too wide) in paragraph at lines 216--249
+Overfull \hbox (51.04431pt too wide) in paragraph at lines 216--249
  [][] 
  []
 
+[2] (../codes/SerialCFMM.c
 
+LaTeX Font Warning: Font shape `OT1/zi4/m/it' undefined
+(Font)              using `OT1/zi4/m/n' instead on input line 40.
+
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 9.0pt on input line 52.
+[3]) [4] (../codes/OMPCFMM.c [5]) [6] (../codes/MPICFMM.c [7]
+Overfull \hbox (16.24995pt too wide) in paragraph at lines 103--105
+[][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (37.85017pt too wide) in paragraph at lines 105--107
+[][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[8]
+Overfull \hbox (27.05006pt too wide) in paragraph at lines 107--109
+[][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+) 
 AED: lastpage setting LastPage
-[2] (./report.aux) ) 
+[9] (./report.aux)
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 13160 strings out of 495025
- 271735 string characters out of 6181515
- 292684 words of memory out of 5000000
- 16182 multiletter control sequences out of 15000+600000
- 8922 words of font info for 27 fonts, out of 8000000 for 9000
+ 13267 strings out of 495025
+ 273042 string characters out of 6181515
+ 307684 words of memory out of 5000000
+ 16278 multiletter control sequences out of 15000+600000
+ 10273 words of font info for 28 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 39i,17n,72p,10449b,1241s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lb
-tn_lu7m2n.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/inconsolata/i4-ot1
--0.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_c7kyj5.enc
-}</usr/share/texlive/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4b
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-
-zi4r.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLiberti
-neT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertin
-eTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-Output written on report.pdf (2 pages, 197986 bytes).
+ 39i,17n,72p,10449b,1544s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_lu7m2n.enc}{/us
+r/share/texlive/texmf-dist/fonts/enc/dvips/inconsolata/i4-ot1-0.enc}{/usr/share
+/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_c7kyj5.enc}</usr/share/texli
+ve/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4b.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineT.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineTB.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb>
+Output written on report.pdf (9 pages, 235812 bytes).
 PDF statistics:
- 38 PDF objects out of 1000 (max. 8388607)
- 27 compressed objects within 1 object stream
+ 65 PDF objects out of 1000 (max. 8388607)
+ 46 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
