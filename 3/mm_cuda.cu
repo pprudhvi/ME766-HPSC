@@ -44,6 +44,10 @@ int main(){
 	   */
 	cudaMemcpy(&C,dev_C,size,cudaMemcpyDeviceToHost);
 
+	cudaFree(dev_A);
+	cudaFree(dev_B);
+	cudaFree(dev_C);
+	
 	end_time = clock();
 	elapsed = ( (double) (end_time-start_time))/ CLOCKS_PER_SEC;
 	
