@@ -10,7 +10,7 @@
 void printMat(float A[NR][NC]);
 void initMat(float A[NR][NC], float B[NR][NC]);
 
-__global__ void multiply(float *A, float *B);
+__global__ void multiply(float *A, float *B, float *C);
 
 int main(){
 	static float A[NR][NC];
@@ -82,5 +82,9 @@ void initMat(float A[NR][NC],float B[NR][NC]){
 			B[i][j] = i*j;
 		}
 	} 
+
+}
+__global__ void multiply(float *A, float *B, float *C){
+
 
 }
