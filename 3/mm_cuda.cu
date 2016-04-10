@@ -1,4 +1,4 @@
-#define N 10000
+#define N 1024
 #define NR N
 #define NC N
 
@@ -35,26 +35,26 @@ int main(){
 	
 	cudaMemcpy(dev_A,&A,size,cudaMemcpyHostToDevice);	
 	cudaMemcpy(dev_B,&B,size,cudaMemcpyHostToDevice);	
-//	cudaMemcpy(dev_C,&C,size,cudaMemcpyHostToDevice);	
 
-	/* decide block sizes
-	   call the function
-		-init dev_C to 0
-
-	   */
+	dim3 dimGrid(N/32,N/32);
+	dim3 dimBlock(32,32);
+	multiply<<<dimGrid,dimBlock>>>(dev_A,dev_B,dev_C);
+	cudaError_t err = cudaGetLastError();
+	if (err != cudaSuccess) 
+		printf("Error: %s\n", cudaGetErrorString(err));
 	cudaMemcpy(&C,dev_C,size,cudaMemcpyDeviceToHost);
 
 	cudaFree(dev_A);
 	cudaFree(dev_B);
 	cudaFree(dev_C);
-	
+
 	end_time = clock();
 	elapsed = ( (double) (end_time-start_time))/ CLOCKS_PER_SEC;
-	
-	// printMat(C);
-	
+
+	printMat(C);
+
 	printf(" \n Time taken is %f \n",elapsed);
-	
+
 	return 0;
 }
 
@@ -78,13 +78,43 @@ void initMat(float A[NR][NC],float B[NR][NC]){
 
 	for( i=0; i < NR; i++){
 		for( j=0; j<NC; j++){
-			A[i][j] = i+j;
-			B[i][j] = i*j;
+			A[i][j] = 1;
+			B[i][j] = 1;
 		}
 	} 
 
 }
 __global__ void multiply(float *A, float *B, float *C){
 
+	// get block position in grid
+	// int blockRow = blockIdx.y;
+	// int blockCol = blockIdx.x;
+
+	// get thread position in block
+	int row = threadIdx.y;
+	int col = threadIdx.x;
+
+	// get absolute position
+	int absRow = blockIdx.y*blockDim.y + threadIdx.y;
+	int absCol = blockIdx.x*blockDim.x + threadIdx.x;
+	int index = absRow*NC + absCol; // location in contiguous 1-d
+
+	int j;
+	int sum = 0;
+	for(j=0;j<NC/32;j++){
+		__shared__ float Apatch[32][32];
+		__shared__ float Bpatch[32][32];
+
+		//fetch the corresponding rows and cols of A,B; each thread gets one element
+		Apatch[row][col] = A[absRow+j*32+col];
+		Bpatch[row][col] = B[absCol+j*32*NC+row*NC];
+		__syncthreads();
+
+		int i;
+		for(i=0; i<32; i++) sum += Apatch[row][i]*Bpatch[i][col];
+		__syncthreads();
+	}
+	
+	C[index] = sum;
 
 }
