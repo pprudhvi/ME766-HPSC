@@ -1,0 +1,5 @@
+shared mem: 49152
+max threads per block : 1024
+max blocks: 65535
+total Const mem: 65536
+Name: GeForce GTX 650 Ti
