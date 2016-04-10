@@ -51,7 +51,7 @@ int main(){
 	end_time = clock();
 	elapsed = ( (double) (end_time-start_time))/ CLOCKS_PER_SEC;
 
-	printMat(C);
+	//printMat(C);
 
 	printf(" \n Time taken is %f \n",elapsed);
 
