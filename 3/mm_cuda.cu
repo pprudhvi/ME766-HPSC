@@ -1,4 +1,4 @@
-#define N 1024
+#define N 64
 #define NR N
 #define NC N
 
@@ -78,8 +78,8 @@ void initMat(float A[NR][NC],float B[NR][NC]){
 
 	for( i=0; i < NR; i++){
 		for( j=0; j<NC; j++){
-			A[i][j] = 1;
-			B[i][j] = 1;
+			A[i][j] = i+j;
+			B[i][j] = i*j;
 		}
 	} 
 
@@ -106,7 +106,7 @@ __global__ void multiply(float *A, float *B, float *C){
 		__shared__ float Bpatch[32][32];
 
 		//fetch the corresponding rows and cols of A,B; each thread gets one element
-		Apatch[row][col] = A[absRow+j*32+col];
+		Apatch[row][col] = A[absRow*NC+j*32+col];
 		Bpatch[row][col] = B[absCol+j*32*NC+row*NC];
 		__syncthreads();
 
