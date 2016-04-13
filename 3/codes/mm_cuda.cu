@@ -1,7 +1,7 @@
-#define N 64
+#define N 10016
 #define NR N
 #define NC N
-
+#define BLOCKSIZE 32
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
@@ -36,8 +36,8 @@ int main(){
 	cudaMemcpy(dev_A,&A,size,cudaMemcpyHostToDevice);	
 	cudaMemcpy(dev_B,&B,size,cudaMemcpyHostToDevice);	
 
-	dim3 dimGrid(N/32,N/32);
-	dim3 dimBlock(32,32);
+	dim3 dimGrid(N/BLOCKSIZE,N/BLOCKSIZE);
+	dim3 dimBlock(BLOCKSIZE,BLOCKSIZE);
 	multiply<<<dimGrid,dimBlock>>>(dev_A,dev_B,dev_C);
 	cudaError_t err = cudaGetLastError();
 	if (err != cudaSuccess) 
@@ -101,17 +101,17 @@ __global__ void multiply(float *A, float *B, float *C){
 
 	int j;
 	int sum = 0;
-	for(j=0;j<NC/32;j++){
-		__shared__ float Apatch[32][32];
-		__shared__ float Bpatch[32][32];
+	for(j=0;j<NC/BLOCKSIZE;j++){
+		__shared__ float Apatch[BLOCKSIZE][BLOCKSIZE];
+		__shared__ float Bpatch[BLOCKSIZE][BLOCKSIZE];
 
 		//fetch the corresponding rows and cols of A,B; each thread gets one element
-		Apatch[row][col] = A[absRow*NC+j*32+col];
-		Bpatch[row][col] = B[absCol+j*32*NC+row*NC];
+		Apatch[row][col] = A[absRow*NC+j*BLOCKSIZE+col];
+		Bpatch[row][col] = B[absCol+j*BLOCKSIZE*NC+row*NC];
 		__syncthreads();
 
 		int i;
-		for(i=0; i<32; i++) sum += Apatch[row][i]*Bpatch[i][col];
+		for(i=0; i<BLOCKSIZE; i++) sum += Apatch[row][i]*Bpatch[i][col];
 		__syncthreads();
 	}
 	
