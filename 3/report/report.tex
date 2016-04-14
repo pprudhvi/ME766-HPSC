@@ -1,0 +1,219 @@
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{article}
+
+\usepackage{booktabs}  % nice looking tables
+\usepackage{siunitx}
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage[usenames,dvipsnames]{color} % Required for custom colors
+\usepackage{graphicx} % Required to insert images
+\usepackage{listings} % Required for insertion of code
+\usepackage{libertine} % Required for the courier font
+\usepackage{inconsolata}
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1} % Line spacing
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName} % Top left header
+\chead{\hmwkClass : \hmwkTitle} % Top center head
+\rhead{\firstxmark} % Top right header
+\lfoot{\lastxmark} % Bottom left footer
+\cfoot{} % Bottom center footer
+\rfoot{Page\ \thepage\ of\ \protect\pageref{LastPage}} % Bottom right footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+%----------------------------------------------------------------------------------------
+%	CODE INCLUSION CONFIGURATION
+%----------------------------------------------------------------------------------------
+
+\definecolor{lineno}{rgb}{0.5,0.5,0.5}
+\definecolor{code}{rgb}{0,0.1,0.6}
+\definecolor{keyword}{rgb}{0.5,0.1,0.1}
+\definecolor{titlebox}{rgb}{0.85,0.85,0.85}
+\definecolor{download}{rgb}{0.8,0.1,0.5}
+\definecolor{title}{rgb}{0.4,0.4,0.4}
+\definecolor{mygrey}{gray}{0.96}
+
+\lstset{
+	language=C,
+	basicstyle=\ttfamily\small\color{code},
+	showspaces=false,
+	%showstringspaces=false,
+	%numbers=left,
+	%firstnumber=1,
+	%stepnumber=1,
+%	numberfirstline=true,
+	%numberstyle=\color{lineno}\sffamily\scriptsize,
+	keywordstyle=\color{keyword}\bfseries,
+	stringstyle=\itshape,
+	%morekeywords={dosync,if},
+	deletekeywords={alter},
+	%backgroundcolor=\color{mygrey},
+	commentstyle=\color{Green},
+}
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT STRUCTURE COMMANDS
+%	Skip this unless you know what you're doing
+%----------------------------------------------------------------------------------------
+
+% Header and footer for when a page split occurs within a problem environment
+\newcommand{\enterProblemHeader}[1]{
+	\nobreak\extramarks{#1}{#1 continued on next page\ldots}\nobreak
+	\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+}
+
+% Header and footer for when a page split occurs between problem environments
+\newcommand{\exitProblemHeader}[1]{
+	\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+	\nobreak\extramarks{#1}{}\nobreak
+}
+
+\setcounter{secnumdepth}{0} % Removes default section numbers
+\newcounter{homeworkProblemCounter} % Creates a counter to keep track of the number of problems
+
+\newcommand{\homeworkProblemName}{}
+\newenvironment{homeworkProblem}[1][Problem \arabic{homeworkProblemCounter}]{ % Makes a new environment called homeworkProblem which takes 1 argument (custom name) but the default is "Problem #"
+	\stepcounter{homeworkProblemCounter} % Increase counter for number of problems
+	\renewcommand{\homeworkProblemName}{#1} % Assign \homeworkProblemName the name of the problem
+	\section{\homeworkProblemName} % Make a section in the document with the custom problem count
+	\enterProblemHeader{\homeworkProblemName} % Header and footer within the environment
+}{
+	\exitProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+
+\newcommand{\problemAnswer}[1]{ % Defines the problem answer command with the content as the only argument
+\noindent\framebox[\columnwidth][c]{\begin{minipage}{0.98\columnwidth}#1\end{minipage}} % Makes the box around the problem answer and puts the content inside
+}
+
+\newcommand{\homeworkSectionName}{}
+\newenvironment{homeworkSection}[1]{ % New environment for sections within homework problems, takes 1 argument - the name of the section
+	\renewcommand{\homeworkSectionName}{#1} % Assign \homeworkSectionName to the name of the section from the environment argument
+	\subsection{\homeworkSectionName} % Make a subsection with the custom name of the subsection
+	\enterProblemHeader{\homeworkProblemName\ [\homeworkSectionName]} % Header and footer within the environment
+}{
+	\enterProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hmwkTitle}{Assignment\ \#3} % Assignment title
+%\newcommand{\hmwkDueDate}{Monday,\ January\ 1,\ 2012} % Due date
+\newcommand{\hmwkClass}{ME 766} % Course/class
+%\newcommand{\hmwkClassTime}{10:30am} % Class/lecture time
+%\newcommand{\hmwkClassInstructor}{Jones} % Teacher/lecturer
+\newcommand{\hmwkAuthorName}{110070039} % Your name
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{
+	\vspace{2in}
+	\textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+	%\normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+	%\vspace{0.1in}\large{\textit{\hmwkClassInstructor\ \hmwkClassTime}}
+	\vspace{3in}
+}
+
+\author{\textbf{\hmwkAuthorName}}
+\date{} % Insert date here if you want it to appear below your name
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+% To have just one problem per page, simply put a \clearpage after each problem
+
+
+\begin{table}[h]
+	\caption{normal vs. cache-friendly }
+	\begin{center}
+	\begin{tabular}{| r | r | r |}
+		\hline
+		N & normal & cache-friendly \\ \hline
+		100&0.008075 & 0.008205 \\ \hline
+		200&0.063293&0.064621 \\ \hline
+		400&0.594145&0.610361 \\ \hline
+		800&5.386019&4.080133 \\ \hline
+		1000&9.487167&5.573937 \\ \hline
+		2000&87.209641&45.544228 \\ \hline
+		5000&1908.666260&703.574890 \\ \hline
+		8000&8362.995117&2878.790771 \\ \hline
+		10000&17790.554688&6591.408691 \\ \hline
+	\end{tabular}
+\end{center}
+\end{table}
+\newpage
+\textbf{Results}
+
+\begin{table}[h]
+	\sisetup{round-mode=places}
+	\caption{Time taken. N - matrix size, n - threads/procesess}
+	\centering
+%	\begin{center}
+	\begin{tabular}{| S[round-precision=3] | S[round-precision=3] | S[round-precision=3] | S[round-precision=3] | S[round-precision=3] | S[round-precision=3] | S[round-precision=3] | S[round-precision=3] | S[round-precision=3] | S[round-precision=3] |}
+			\hline
+			{N}&{serial} & {OMP n=2}& {OMP n=4}& {OMP n=8}& {OMP n= 24} & {MPI n=2}& {MPI n=4}& {MPI n=8}& {MPI n=24} \\ \hline
+			{100}&0.008205&0.009146&0.002916&0.001719
+			&0.006868 & 0.004521 & 0.004978 &0.002792&0.005075\\ \hline
+
+			{200}&0.064621&0.006868&0.041666&	0.021512&0.010956
+			&0.058968&0.033004&0.018016&0.022578\\ \hline
+
+			{400} &0.610361&0.329870&0.186483&0.105709&0.080594 
+			&0.345524&0.250767&0.183066&0.092229\\ \hline
+
+			{800}&4.080133&2.195364&1.172719&0.573523&0.486476
+			&2.328038&1.368429&0.696170&0.588597\\ \hline
+
+			{1000}&5.573937&2.841520&2.338277&0.804072&0.593531
+			&2.898817&2.535994&1.165923&0.717748\\ \hline
+
+			{2000}&45.544228&22.061188&11.366979&5.903165&4.064920
+			&22.534018&11.835779&10.047218&4.581032\\ \hline
+
+			{5000}&703.574890&342.611450&175.706894&90.065071&62.474705
+			&346.948578&179.307938&91.601669&57.712799\\ \hline
+
+			{8000}&2878.790771&1400.647705&697.816223&363.321991 
+			&234.618332&1434.890625&715.344727&636.908081
+			&233.626678 \\ \hline
+
+			{10000}&6591.408691&2737.574951&1798.366455&740.366760 
+			&499.029694&2812.980469&1680.102051&877.236450&557.603271\\ 
+			\hline
+		\end{tabular}
+%	\end{center}
+
+
+\end{table}
+
+\textbf{Hardware used}
+The machine on which the above results were produced has 24 cores, 15MB L3 cache and it is running Debian OS.
+\newpage
+\textbf{Code}
+\lstinputlisting{../codes/mm_cuda.cu}
+\end{document}
