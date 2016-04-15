@@ -146,10 +146,13 @@
 %----------------------------------------------------------------------------------------
 
 % To have just one problem per page, simply put a \clearpage after each problem
+Matrix multiplication kernel:
 \lstinputlisting[language=C, firstline=89, lastline=119]{../codes/mm_cuda.cu}
 
-\textbf{Results}
+In the above code, \verb|BLOCKSIZE| is the number of threads per dimension in
+a 2-D square block and \verb|NC| is the size of the matrix.
 
+\textbf{Results}
 \begin{table}[h]
 	\sisetup{round-mode=places}
 	\caption{Time taken. N - matrix size, n - threads/procesess}
@@ -191,9 +194,31 @@
 
 
 \end{table}
+The following table gives the runtimes of serial, OMP, MPI, and CUDA codes.
+\verb|float| datatype is used even though the numbers are large enough
+to overflow hence the results(matrix C) are consistent but may not be correct. Also, 
+for CUDA programs N used is the nearest multiple of \verb|BLOCKSIZE| to the
+number mentioned in the table. \\
+\newpage
+The following can be inferred from the results:
+\begin{itemize}
+	\item CUDA implementation outperforms the other three implementations for large N
 
+	\item The runtimes of CUDA code are more or less the same for N$<$1000
+	\item Data flow through PCIe becomes the bottleneck hence the runtimes may not
+		scale as expected with N.   
+	\item CUDA kernel that user 32x32 block size is slightly faster compared 
+		to the 16x16 one. This is due to better usage of shared memory.
+\end{itemize}
 \textbf{Hardware used}
-The machine on which the above results were produced has 24 cores, 15MB L3 cache and it is running Debian OS.
+The machine on which the above results were produced has 24 cores, 15MB L3 cache and it is running Debian Server OS.\\
+GPU specs.: \\
+Name: GeForce GTX 650 Ti \\
+Shared memory: 49152 \\
+Max threads per block : 1024 \\
+Max blocks: 65535 \\
+total Const mem: 65536 \\
+
 \newpage
 \textbf{Code}
 \lstinputlisting{../codes/mm_cuda.cu}
