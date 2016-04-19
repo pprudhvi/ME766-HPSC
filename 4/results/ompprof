@@ -1,0 +1,41 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+ 50.24      2.29     2.29                             deregister_tm_clones
+ 34.97      3.88     1.59                             __gmon_start__
+ 15.27      4.57     0.69                             register_tm_clones
+  0.22      4.58     0.01        1    10.07    10.07  printMat
+  0.00      4.58     0.00        1     0.00     0.00  frame_dummy
+
+			Call graph
+
+
+granularity: each sample hit covers 2 byte(s) for 0.22% of 4.58 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]     49.9    2.29    0.00                 deregister_tm_clones [1]
+-----------------------------------------------
+                                                 <spontaneous>
+[2]     34.7    1.59    0.00                 __gmon_start__ [2]
+-----------------------------------------------
+                                                 <spontaneous>
+[3]     15.2    0.69    0.00                 register_tm_clones [3]
+-----------------------------------------------
+                0.01    0.00       1/1           _start [5]
+[4]      0.2    0.01    0.00       1         printMat [4]
+-----------------------------------------------
+                                                 <spontaneous>
+[5]      0.2    0.00    0.01                 _start [5]
+                0.01    0.00       1/1           printMat [4]
+-----------------------------------------------
+                0.00    0.00       1/1           __do_global_dtors_aux [12]
+[6]      0.0    0.00    0.00       1         frame_dummy [6]
+-----------------------------------------------
+
+Index by function name
+
+   [2] __gmon_start__          [6] frame_dummy             [3] register_tm_clones
+   [1] deregister_tm_clones    [4] printMat
