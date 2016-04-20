@@ -1,0 +1,24 @@
+==3133== Cachegrind, a cache and branch-prediction profiler
+==3133== Copyright (C) 2002-2015, and GNU GPL'd, by Nicholas Nethercote et al.
+==3133== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==3133== Command: ./omp 
+==3133== 
+--3133-- warning: L3 cache found, using its data for the LL simulation.
+
+ Time taken is 244.495880 
+==3133== 
+==3133== I   refs:      33,037,538,399
+==3133== I1  misses:             1,816
+==3133== LLi misses:             1,687
+==3133== I1  miss rate:           0.00%
+==3133== LLi miss rate:           0.00%
+==3133== 
+==3133== D   refs:      14,019,014,043  (13,015,728,664 rd   + 1,003,285,379 wr)
+==3133== D1  misses:        62,772,305  (    62,644,708 rd   +       127,597 wr)
+==3133== LLd misses:        62,761,087  (    62,633,937 rd   +       127,150 wr)
+==3133== D1  miss rate:            0.4% (           0.5%     +           0.0%  )
+==3133== LLd miss rate:            0.4% (           0.5%     +           0.0%  )
+==3133== 
+==3133== LL refs:           62,774,121  (    62,646,524 rd   +       127,597 wr)
+==3133== LL misses:         62,762,774  (    62,635,624 rd   +       127,150 wr)
+==3133== LL miss rate:             0.1% (           0.1%     +           0.0%  )

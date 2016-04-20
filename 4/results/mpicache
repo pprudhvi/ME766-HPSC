@@ -1,0 +1,25 @@
+==3225== Cachegrind, a cache and branch-prediction profiler
+==3225== Copyright (C) 2002-2015, and GNU GPL'd, by Nicholas Nethercote et al.
+==3225== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==3225== Command: mpirun -np 8 ./mpi
+==3225== 
+--3225-- warning: L3 cache found, using its data for the LL simulation.
+[warn] Epoll ADD(4) on fd 1 failed.  Old events were 0; read change was 0 (none); write change was 1 (add): Operation not permitted
+
+ Time taken is 3.978104 
+==3225== 
+==3225== I   refs:      60,582,190
+==3225== I1  misses:        83,243
+==3225== LLi misses:        10,336
+==3225== I1  miss rate:       0.14%
+==3225== LLi miss rate:       0.02%
+==3225== 
+==3225== D   refs:      24,637,760  (16,965,706 rd   + 7,672,054 wr)
+==3225== D1  misses:       849,555  (   795,670 rd   +    53,885 wr)
+==3225== LLd misses:        76,610  (    48,015 rd   +    28,595 wr)
+==3225== D1  miss rate:        3.4% (       4.7%     +       0.7%  )
+==3225== LLd miss rate:        0.3% (       0.3%     +       0.4%  )
+==3225== 
+==3225== LL refs:          932,798  (   878,913 rd   +    53,885 wr)
+==3225== LL misses:         86,946  (    58,351 rd   +    28,595 wr)
+==3225== LL miss rate:         0.1% (       0.1%     +       0.4%  )
