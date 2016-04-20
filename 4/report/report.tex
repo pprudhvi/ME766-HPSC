@@ -1,0 +1,31 @@
+\documentclass{article}
+
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage{libertine}
+\usepackage{inconsolata}
+
+\usepackage{fancyvrb}
+% redefine \VerbatimInput
+\RecustomVerbatimCommand{\VerbatimInput}{VerbatimInput}%
+{fontsize=\footnotesize,
+ %
+ frame=lines,  % top and bottom rule only
+ framesep=2em, % separation between frame and text
+ rulecolor=\color{Gray},
+}
+
+\begin{document}
+
+Serial code profiling results:
+\VerbatimInput{../results/serialprof}
+\VerbatimInput{../results/ompprof}
+\VerbatimInput{../results/mpiprof}
+\VerbatimInput{../results/mm_cudaprof}
+
+\VerbatimInput{../results/serialcache}
+\VerbatimInput{../results/ompcache}
+\VerbatimInput{../results/mpicache}
+
+\end{document}
+

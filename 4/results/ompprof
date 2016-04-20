@@ -1,14 +1,13 @@
-Flat profile:
+                Flat profile:
 
 Each sample counts as 0.01 seconds.
   %   cumulative   self              self     total           
  time   seconds   seconds    calls   s/call   s/call  name    
  97.45      7.06     7.06        1     7.06     7.06  initMat
   0.42      7.09     0.03        1     0.03     0.03  printMat
-
-			Call graph
-
-
+  
+                    Call graph
+                    
 granularity: each sample hit covers 2 byte(s) for 0.14% of 7.09 seconds
 
 index % time    self  children    called     name
@@ -23,7 +22,7 @@ index % time    self  children    called     name
                 0.03    0.00       1/1           main [1]
 [3]      0.4    0.03    0.00       1         printMat [3]
 -----------------------------------------------
-
+
 Index by function name
 
    [2] initMat                 [3] printMat
