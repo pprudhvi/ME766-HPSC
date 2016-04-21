@@ -25,12 +25,28 @@
 
 \begin{document}
 
-Profiling Results:
+Profiling is done using \verb|gprof| and \verb|mpicc|. It seems
+that these tools are not enough to profile MPI code and I couldn't find 
+a proper way to do it. Here are the results:
 \VerbatimInput[label=\fbox{\color{Black}serial}]{../results/serialprof}
+As expected, the main computation takes up most of the time 
+in serial implementation.
 \VerbatimInput[label=\fbox{\color{Black}OMP}]{../results/ompprof}
+In both MPI and OMP, the main function takes little to no time.
+\verb|initMat|, the function that initializes the matrices
+, takes more time than the actual multiplication. 
 \VerbatimInput[label=\fbox{\color{Black}MPI}]{../results/mpiprof}
 \VerbatimInput[label=\fbox{\color{Black}CUDA}]{../results/mm_cudaprof}
-Cachegrind analysis:
+Here memory transfer takes considerable amount of time
+apart from the time taken by \verb|multiply|. However, for smaller 
+matrix sizes \verb|memorycpy| takes more time 
+than \verb|multiply|. 
+\\
+\newpage
+\textbf{Cachegrind analysis:} The instruction miss rates and data miss rates
+are mentioned below. We can see that serial and OMP has similar statistics
+where as in MPI instruction and data-miss rates are considerably higher.
+
 \VerbatimInput[label=\fbox{\color{Black}serial}]{../results/serialcache}
 \VerbatimInput[label=\fbox{\color{Black}OMP}]{../results/ompcache}
 \VerbatimInput[label=\fbox{\color{Black}MPI}]{../results/mpicache}

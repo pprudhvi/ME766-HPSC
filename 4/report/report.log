@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2016.2.25)  21 APR 2016 15:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2016.2.25)  21 APR 2016 16:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -257,39 +257,47 @@ LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
 Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
 tim
 )
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 29.
-LaTeX Font Info:    Try loading font information for OT1+zi4 on input line 29.
+LaTeX Font Info:    Try loading font information for OT1+zi4 on input line 28.
 
 (/usr/share/texlive/texmf-dist/tex/latex/inconsolata/ot1zi4.fd
 File: ot1zi4.fd 2013/06/09 OT1/zi4 (Inconsolata)
-) [1{/usr/share/texlive/texmf-dist/fonts/map/pdftex/updmap/pdftex.map}
+)
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 8.0pt on input line 31.
+ [1{/usr/share/texlive/texmf-dist/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
-LaTeX Font Info:    Try loading font information for TS1+zi4 on input line 34.
+Underfull \hbox (badness 10000) in paragraph at lines 40--45
 
-(/usr/share/texlive/texmf-dist/tex/latex/inconsolata/ts1zi4.fd
+ []
+
+[2]
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/n' will be
+(Font)              scaled to size 10.0pt on input line 46.
+LaTeX Font Info:    Try loading font information for TS1+zi4 on input line 50.
+ (/usr/share/texlive/texmf-dist/tex/latex/inconsolata/ts1zi4.fd
 File: ts1zi4.fd 2013/06/07 Fontinst v1.933 font definitions for TS1/zi4.
-) [2] [3]
+) [3]
 [4] (./report.aux) ) 
 Here is how much of TeX's memory you used:
- 3841 strings out of 495025
- 59317 string characters out of 6181515
- 113787 words of memory out of 5000000
- 7031 multiletter control sequences out of 15000+600000
- 7137 words of font info for 19 fonts, out of 8000000 for 9000
+ 3845 strings out of 495025
+ 59411 string characters out of 6181515
+ 112787 words of memory out of 5000000
+ 7033 multiletter control sequences out of 15000+600000
+ 8946 words of font info for 22 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  27i,11n,43p,197b,401s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/inconsolata/
-i4-ts1.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/inconsolata/i4-ot1-0.
-enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_c7kyj5.enc}</
-usr/share/texlive/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineT.pfb
->
-Output written on report.pdf (4 pages, 101167 bytes).
+i4-ts1.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_lu7m2n
+.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/inconsolata/i4-ot1-0.enc}{/
+usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_c7kyj5.enc}</usr/sh
+are/texlive/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineT.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineTB.pfb>
+Output written on report.pdf (4 pages, 188620 bytes).
 PDF statistics:
- 30 PDF objects out of 1000 (max. 8388607)
- 21 compressed objects within 1 object stream
+ 35 PDF objects out of 1000 (max. 8388607)
+ 25 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
