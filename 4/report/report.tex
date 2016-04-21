@@ -10,22 +10,30 @@
 \RecustomVerbatimCommand{\VerbatimInput}{VerbatimInput}%
 {fontsize=\footnotesize,
  %
+ labelposition=topline,
  frame=lines,  % top and bottom rule only
- framesep=2em, % separation between frame and text
+ framesep=1em, % separation between frame and text
  rulecolor=\color{Gray},
 }
 
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+%\fancyhf{}
+\rhead{110070039}
+\chead{ME766}
+\lhead{HW \#4}
+
 \begin{document}
 
-Serial code profiling results:
-\VerbatimInput{../results/serialprof}
-\VerbatimInput{../results/ompprof}
-\VerbatimInput{../results/mpiprof}
-\VerbatimInput{../results/mm_cudaprof}
-
-\VerbatimInput{../results/serialcache}
-\VerbatimInput{../results/ompcache}
-\VerbatimInput{../results/mpicache}
+Profiling Results:
+\VerbatimInput[label=\fbox{\color{Black}serial}]{../results/serialprof}
+\VerbatimInput[label=\fbox{\color{Black}OMP}]{../results/ompprof}
+\VerbatimInput[label=\fbox{\color{Black}MPI}]{../results/mpiprof}
+\VerbatimInput[label=\fbox{\color{Black}CUDA}]{../results/mm_cudaprof}
+Cachegrind analysis:
+\VerbatimInput[label=\fbox{\color{Black}serial}]{../results/serialcache}
+\VerbatimInput[label=\fbox{\color{Black}OMP}]{../results/ompcache}
+\VerbatimInput[label=\fbox{\color{Black}MPI}]{../results/mpicache}
 
 \end{document}
 
